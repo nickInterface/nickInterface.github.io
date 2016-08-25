@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input id="name"/>
+        <button id="add" type="button">Add</button>
+        <div id="list"></div>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script>
+            var namesList = [];
+            
+            function addName(inputName){
+                $("#list").append("<span>"+inputName+"</span><br/>");
+                namesList.push(inputName);
+                localStorage.namesList = namesList;
+            }
+            
+            $("#add").click(function(){
+                var name = $("#name").val();
+                addName(name);
+            });
+            
+            if(typeof(Storage) !== "undefined"){
+                if(localStorage.namesList !== undefined){
+                    //because localStorage stores arrays as strings
+                    //the localStorage version of our list has changed
+                    //our list to the format: name,name,name,name
+                    //as a result we need to split it by comma to get
+                    //it back into array form to loop through
+                    
+                    var names = localStorage.namesList;
+                    var list = names.split(",");
+                    for(name in list){
+                        addName(list[name]);
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
