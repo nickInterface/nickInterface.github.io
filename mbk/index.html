@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #popup{
+                display: none;
+                position: absolute;
+                top: 35vh;
+                left: 35vw;
+                width: 30vw;
+                height: 30vh;
+                border: 5px solid black;
+                background-color: lightgray;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="popup">
+            <h1>Inside Popup</h1>
+            <p>Here is some text</p>
+        </div>
+        <button id="show" type="button">Show Popup</button>
+        <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>
+        <script>
+            $("#show").click(function(){
+                $("#popup").fadeIn(2000);
+            });
+        </script>
+    </body>
+</html>
